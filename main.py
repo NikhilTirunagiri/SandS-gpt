@@ -6,6 +6,7 @@ from pathlib import Path
 openai.api_key ="your_key"
 
 user_input=input("paste your text here: ")
+nImages = input("Number of Images to be generated: ")
 
 res_summary = openai.chat.completions.create(
     model = "gpt-3.5-turbo",
@@ -47,7 +48,7 @@ res_images = openai.images.generate(
   prompt=f"{image_subjects}",
   size="1024x1024",
   quality="standard",
-  n=1,
+  n=f"{nImages}",
 )
 
 image_url = res_images.data[0].url
